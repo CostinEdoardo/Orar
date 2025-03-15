@@ -71,6 +71,7 @@
             width: 80%;
             max-width: 500px;
             transition: background-color 0.3s;
+            position: relative;
         }
         .tabs {
             display: flex;
@@ -171,6 +172,9 @@
             cursor: pointer;
             border-radius: 8px;
             transition: background-color 0.3s;
+            position: relative;
+            z-index: 10; /* Ensure close button is on top */
+            margin-top: 10px; /* Add margin to move close button down */
         }
         .light-theme .button, .light-theme .close-button {
             background-color: #d0d0d0; /* Very light gray but darker than text for light theme */
@@ -190,6 +194,7 @@
             padding: 10px;
             border-radius: 8px;
             margin-bottom: 10px;
+            margin-top: 10px; /* Add margin to create space between class editors */
             position: relative;
         }
         .light-theme .class-item {
@@ -205,6 +210,7 @@
             color: #e0e0e0;
             font-size: 16px;
             cursor: pointer;
+            z-index: 10; /* Ensure remove button is on top */
         }
         .light-theme .remove-class {
             color: #2e2e2e;
@@ -250,7 +256,7 @@
         </div>
     </div>
     <button class="settings-button" onclick="openModal()">⚙️</button>
-    <div class="modal" id="settingsModal">
+    <div class="modal" id="settingsModal" onclick="closeOnOutsideClick(event)">
         <div class="modal-content">
             <div class="tabs">
                 <button class="tab" onclick="openTab(event, 'editTab')">Edit Classes</button>
@@ -324,15 +330,13 @@
                 <div class="button-group">
                     <button class="button" onclick="saveData()">Save</button>
                     <button class="button" onclick="loadData()">Load</button>
-                </div>
-                <div class="button-group">
                     <button class="close-button" onclick="closeModal()">Close</button>
                 </div>
             </div>
             <div id="themeTab" class="tab-content">
                 <h3>Change Theme</h3>
-                <button class="button" onclick="toggleTheme()">Toggle Dark/Light Theme</button>
                 <div class="button-group">
+                    <button class="button" onclick="toggleTheme()">Toggle Dark/Light Theme</button>
                     <button class="close-button" onclick="closeModal()">Close</button>
                 </div>
             </div>
@@ -345,6 +349,12 @@
 
         function closeModal() {
             document.getElementById('settingsModal').style.display = 'none';
+        }
+
+        function closeOnOutsideClick(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
         }
 
         function openTab(event, tabId) {
