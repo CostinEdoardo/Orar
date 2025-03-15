@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekly Schedule</title>
@@ -256,14 +254,14 @@
         </div>
     </div>
     <button class="settings-button" onclick="openModal()">⚙️</button>
-    <div class="modal" id="settingsModal" onclick="closeOnOutsideClick(event)">
+    <div class="modal" id="settingsModal" onclick="closeOnOutsideClick(event)" style="display: none;">
         <div class="modal-content">
             <div class="tabs">
                 <button class="tab" onclick="openTab(event, 'editTab')">Edit Classes</button>
                 <button class="tab" onclick="openTab(event, 'saveTab')">Save/Load</button>
                 <button class="tab" onclick="openTab(event, 'themeTab')">Change Theme</button>
             </div>
-            <div id="editTab" class="tab-content">
+            <div id="editTab" class="tab-content active">
                 <div class="tabs">
                     <button class="subtab" onclick="openSubTab(event, 'mondaySubTab')">Monday</button>
                     <button class="subtab" onclick="openSubTab(event, 'tuesdaySubTab')">Tuesday</button>
@@ -454,5 +452,5 @@
             });
         }
     </script>
-</body>
-</html>
+
+</body></html>
